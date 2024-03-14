@@ -4,17 +4,17 @@ body{
     font-size: 16pt; /* test for this! Make all sizes em or rem */
   }
   
-  header{
+header{
     background: #fff;
     border-bottom: 3px solid #50C7C7;
     margin-bottom:20px
-  }
+}
   
-  h1{
+h1{
     font-size: 2em;
     text-align: center;
     line-height: 2;
-  }
+}
   
   h2{
     font-size: 1.5em;
