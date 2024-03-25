@@ -1,4 +1,4 @@
-/* This animation will start when the page is loaded and will gradually 
+/* 1. This animation will start when the page is loaded and will gradually 
 increase the width of the logo from 25px to 475px while simultaneously 
 transitioning the opacity from 0 to 1 over a period of 5 seconds */
 @keyframes logoAnimation {
@@ -15,47 +15,40 @@ transitioning the opacity from 0 to 1 over a period of 5 seconds */
     animation: logoAnimation 5s forwards;
 }
 
-/* Edit the body element to use the Poppins font (using Google fonts) with 
-serif as a backup.  It should also use the image “concrete_seamless.png” as a 
+/* 2. Edit the body element to use the Poppins font (using Google fonts) with 
+serif as a backup.  Also uses the image “concrete_seamless.png” as a 
 background-image with a backup color of #f1f1f1. */
 body {
     font-family: "Poppins", sans-serif;
     background-image: url(../images/concrete_seamless.png);
     background-color: #f1f1f1;
 }
-/* Edit the css for the header tag (all instances) to use flex to match our
+/* 3. Edits the header tag (all instances) to use flex to match the
 example. */
 header{
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
-/* Edit the css for the nav_links class to use flex to match our example.
-Do not modify the list items or the links - modify the nav_links class to
-use flex. */
+/* 4. Edits the nav_links class to use flex to match the example. Uses column flex direction */
 .nav_links{
     display: flex;
     flex-direction: column;
 }
 
-/* Style the links so that they have the same color even after they have
+/* 5. Style the links so that they have the same color even after they have
 been visited */
 a,
 a:visited {
   color: #3366cc; /* Set the same color for normal and visited links */
 }
-
 a:hover {
   text-decoration: underline; /* Add underline on hover */
 }
 
-/* background: #288088,
-solid 2px border using #45ADAD,
-20px of padding on the top and the bottom, 
-50px border-radius on the top left and right corners
- */
+ /* 6. Use '>' selector to access specific elements. Use border radius top-left and top-right to 
+ make curves*/
 .card > header {
     background: #288088;
     border: 2px solid #45ADAD;
@@ -63,7 +56,7 @@ solid 2px border using #45ADAD,
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
   }
-/* You will need to utilize a second selector */
+/* 7. Had to perform same radius on the card selectors to match the example.  */
 .card {
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
@@ -72,24 +65,22 @@ solid 2px border using #45ADAD,
     and an initial main size of 450px for each card. */
     overflow: hidden; 
 }
-
+/* 8. Using flex to match the example. flex-wrap: wrap is helping the most */
 .pricing {
     display: flex;
     justify-content: center; /* Centers cards horizontally */
     align-items: center; /* Centers cards vertically */
     flex-wrap: wrap;
   }
-
+/* 9. Matching gallery images to the example, had to make the dimensions the same throughout */
 .gallery img {
     border: 10px solid #50C7C7;
     margin: 10px;
     width: 300px;
     height: 200px;
 }
-/* display: flex;: This sets the display property of the gallery class to flex, enabling flexbox layout.
-flex-wrap: wrap;: This property allows the items to wrap onto multiple lines if needed.
-justify-content: space-around;: This property evenly distributes the items with space around them, providing equal space between and around items.
-align-items: center;: This property centers the items vertically within the flex container. */
+/* 10. Styles "gallery" elements as a flex container with wrapped rows, evenly spaced items,
+and vertically centered content within each row.*/
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -98,8 +89,9 @@ align-items: center;: This property centers the items vertically within the flex
   }
 
 @media screen and (min-width: 900px) {
+    /* 11. Aligns items in the header horizontally with space between them, 
+    and items in .nav_links horizontally in a row */
     header {
-        
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -108,6 +100,8 @@ align-items: center;: This property centers the items vertically within the flex
         display: flex;
         flex-direction: row;
     }
+    /* 12. Sets the pricing section to display its contents in a single row without wrapping,
+   and each card within the section to have a fixed width of 275px */
     .pricing {
         display: flex;
         flex-direction: row;
@@ -116,6 +110,9 @@ align-items: center;: This property centers the items vertically within the flex
     .card {
         flex: 0 0 275px;
     }
+
+    /* 13. Styles the first header element that is not a descendant of the main element 
+    to be fixed at the top of the viewport and span the entire width with flexbox layout */
     header:first-of-type:not(main header)  {
         position: fixed;
         top: 0;
@@ -128,38 +125,46 @@ align-items: center;: This property centers the items vertically within the flex
 
 }
 @media (prefers-reduced-motion: reduce) {
-    /* Removes animation from the logo */
+    /* 14. Removes animation from the logo */
     #logo {
         animation: none;
     }
 }
 /* CSS for print view in portrait mode */
 @media print {
+    /* 15. New fonts and removes background image */
     body {
       font-family: Arial, Helvetica, sans-serif;
       background-image: none;
     }
-    .gallery, h2 {
+    /* 16. Removes gallery header and whole section */
+    .gallery {
         display: none;
     }
+    /* 17.  Sets navigation links to flex container, aligns them in a row,
+    removes padding. Adds right and left margin to each nav_item. */
     .nav_links {
         display: flex;
         flex-direction: row;
         padding: 0;
-        margin-left: 0;
     }
     .nav_item {
         margin: 0 50px 0 50px
     }
-    .card {
-        border: 2px solid #45ADDD;
-        flex-basis: 325px;
-    }
-
+    /* 18.  */
     .pricing {
         display: flex;
         justify-content: space-between;
         flex-wrap: nowrap;
         flex-direction: row;
+    }
+    /* 19. Gives the cards a border*/
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+    /* 20. Removes Gallery header */
+    h2 {
+        display: none;
     }
 }
